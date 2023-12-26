@@ -1,0 +1,80 @@
+\documentclass[12pt]{article}
+\usepackage{CJK}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{newtxmath}
+\usepackage[all]{xy}
+\geometry{a4paper,left=1cm,right=1cm,top=1cm,bottom=1cm}
+\begin{CJK}{UTF8}{gkai}
+%设定新的字体快捷命令
+\title{Week 13}
+\author{方科晨}
+\begin{document}
+\maketitle
+\section{Exercise 12}
+令 $C.=(\cdots\longrightarrow C_{n+1}\stackrel{\partial}{\longrightarrow}C_n\stackrel{\partial}{\longrightarrow}C_{n-1}\longrightarrow\cdots)$ 和 $D.=(\cdots\longrightarrow D_{n+1}\stackrel{\partial}{\longrightarrow}D_n\stackrel{\partial}{\longrightarrow}D_{n-1}\longrightarrow\cdots)$ 是两个链复形，且 $f_\sharp,g_\sharp,h:C.\to D.$ 是链映射
+\begin{enumerate}
+    \item 自反性：存在同态 $P:C_n\to D_{n+1}:\sigma\to 0,\forall n$ ，则有 $\partial P+P\partial = 0 = f_\sharp-f_\sharp$ ，即 $f_\sharp\sim f_\sharp$ 
+    \item 对称性：若存在同态 $P:C_n\to D_{n+1},\forall n$ 使得 $\partial P+P\partial=g_\sharp-f_\sharp$ ，则存在同态 $(-P):C_n\to D_{n+1},\forall n$ 使得 $\partial(-P)+(-P)\partial=f_\sharp-g_\sharp$ ，即 $f_\sharp\sim g_\sharp\Rightarrow g_\sharp\sim f_\sharp$
+    \item 传递性：若存在同态 $P_1,P_2:C_n\to D_{n+1},\forall n$ 使得 $\partial P_1+P_1\partial=g_\sharp-f_\sharp$ 和 $\partial P_2+P_2\partial=h_\sharp-g_\sharp$ ，则有$(P_1+P_2):C_n\to D_{n+1},\forall n$ 满足 $\partial(P_1+P_2)+(P_1+P_2)\partial=h_\sharp-f_\sharp$ ，即 $f_\sharp\sim g_\sharp,g_\sharp\sim h_\sharp\Rightarrow f_\sharp\sim h_\sharp$
+\end{enumerate}
+综上，链映射的同伦关系是等价关系
+\section{Exercise 15}
+\begin{enumerate}
+    \item "$\Rightarrow$": 如果 $C=0$ ，则 $B=\ker(B\to C)=\textrm{Im}(A\to B)$ ，则 $A\to B$ 为满射。同时 $0=\textrm{Im}(C\to D)=\ker (D\to E)$ ，故有 $D\to E$ 为单射
+    \item "$\Leftarrow$": 如果 $A\to B$ 为满射，$D\to E$ 为单射，则 $B=\textrm{Im}(A\to B)=\ker(B\to C)\Rightarrow \textrm{Im}(B\to C)\cong 0$ 和 $\textrm{Im}(C\to D)=\ker(D\to E)= 0\Rightarrow \ker (C\to D)\cong C$ ，又因为 $\textrm{Im}(B\to C)=\ker (C\to D)$ 故 $C=0$
+\end{enumerate}
+对于 $(X,A)$ ，嵌入映射 $A\hookrightarrow X$ 诱导的长正合列 $\cdots\to H_{n+1}(X,A)\stackrel{\partial}{\to} H_n(A)\stackrel{i_*}{\to} H_n(X)\stackrel{j_*}{\to}H_n(X,A)\stackrel{\partial}{\to} H_{n-1}(A)\stackrel{i_*}{\to} H_{n-1}(X)\stackrel{}{\to} \cdots \to H_0(X,A)\to 0$
+\begin{enumerate}
+    \item "$\Rightarrow$": 如果 $i_*$ 是同构，则 $i_*$ 是单满射。由上述结论， $i_*:H_n(A)\to H_n(X)$ 满射且 $i_*:H_{n-1}(A)\to H_{n-1}(X)$ 单射，故 $H_n(X,A)=0$
+    \item "$\Leftarrow$": 如果 $H_n(X,A)=0,\forall n$ 由上述结论和 $H_n(X,A)=0$ 可得 $i_*$ 是满射，又由 $H_{n-1}(X,A)=0$ 可得 $i_*$ 是单射，故 $i_*$ 是同构
+\end{enumerate}
+\section{Exercise 16}
+\subsection{a}
+有正合列 $\cdots\to H_{1}(X,A)\stackrel{\partial}{\to} H_0(A)\stackrel{i_*}{\to} H_0(X)\stackrel{j_*}{\to}H_0(X,A)\stackrel{\partial}{\to} 0$ 。有 $H_0(X,A)=0\Leftrightarrow \ker \partial = 0 \Leftrightarrow \textrm{Im} j_*=0\Leftrightarrow \ker j_*=H_0(X)\Leftrightarrow \textrm{Im} i_*=H_0(X)$
+即 $H_0(X,A)\Leftrightarrow i_*$ 是满射\\
+令 $\{X_\alpha\}_{\alpha\in I}$ 是 $X$ 的道路连通分支，则有 $H_0(X)=\bigoplus_{\alpha\in I}H_0(X_\alpha)$ 。又 $\{A\cap X_\alpha\}_{\alpha\in I}$ 是 $A$ 的道路连通分支（可能含有空集合），则 $H_0(A)=\bigoplus_{\alpha\in I}H_0(A\cap X_\alpha)$ \\
+则有 $i_*:H_0(A)\to H_0(X)$ 是满射 $\Leftrightarrow \forall \alpha\in I,i_*:H_0(A\cap X_\alpha)\to H_0(X_\alpha)$ 是满射\\
+又有 $H_0(A\cap X_\alpha)\stackrel{i_*}{\to} H_0(X_\alpha)\stackrel{\cong}{\to} \mathbb{Z}$ ，其中，若 $i_*$ 满射，则 $A\cap X_\alpha\neq \varnothing$。若 $A\cap X_\alpha \neq \varnothing$ ，则 $i_*\circ \varepsilon: H_0(A\cap X_\alpha)\to \mathbb{Z}$ 是同构，则 $i_*$ 是满射。故 $\forall \alpha \in I ,i_*:H_0(A\cap X_\alpha)\to H_0(X\alpha)$ 是满射 $\Leftrightarrow A\cap X_\alpha \neq \varnothing$ ，故 $H_0(X,A)=0$ iff $A$ 与 $X$ 的每个道路连通分支都有交
+\subsection{b}
+"$\Rightarrow$":\\
+考虑正合列 $\cdots\to H_{2}(X,A)\stackrel{\partial}{\to} H_1(A)\stackrel{i_*}{\to} H_1(X)\stackrel{j_*}{\to}H_1(X,A)\stackrel{\partial}{\to} H_0(A)\to\cdots$ 。则由前一题可得， $H_1(X,A)=0$ 有 $i_*:H_1(A)\to H_1(X)$ 是满射和 $i_*:H_0(A)\to H_0(X)$ 是单射。\\
+由于 $H_0(A)$ 是由 $A$ 的所有连通分支中的圈生成的。假定 $A_1,A_2$ 是 $A$ 的两个道路连通分支，且都包含于某个 $X$ 的道路连通分支 $X_\alpha$ ，令 $a_1,a_2$ 为这两个道路连通分支的圈，则 $i(a_1),i(a_2):C_0(A)\to C_0(X_\alpha)$ ，又 $X_\alpha$ 为连通的，则有 $[i(a_1)]=[i(a_2)]$ 。又有 $i_*:H_0(A)\to H_0(X)$ 是单射，故 $[a_1]=[a_2]$ 。矛盾，故 $X$ 的任意一个道路连通分支至多只包含 $A$ 的一个道路连通分支。\\
+"$\Leftarrow$":\\
+首先可证，如果 $X$ 的任意一个道路连通分支至多只包含 $A$ 的一个道路连通分支，则有 $i_*:H_0(A)\to H_0(X)$ 为单射。\\
+假设 $i_*$ 不是单射，则 $\exists 0\neq [a]\in H_0(A)$ 满足 $i_*([a])=0$ 。令 $\{A_\alpha\}_{\alpha\in I}$ 是 $A$ 的所有道路连通分支，令 $a_\alpha$ 是 $A_\alpha$ 中的圈。由 $H_0(A)=\bigoplus_{\alpha\in I} H_0(A_\alpha)$ ，存在 $c_\alpha\in \mathbb{Z},\forall \alpha \in I$ 使得 $[a]=\sum_{\alpha \in I} c_\alpha [a_\alpha]$ 。又因为 $X$ 的任意一个道路连通分支至多只包含 $A$ 的一个道路连通分支，故 $i_*([a_\alpha])$ 之间线性无关，又 $i_*([a])=0$ 所以有 $c_\alpha=0,\forall \alpha\in I$ ，则有 $[a]=0$ ，矛盾。\\
+因此 $i_*:H_0(A)\to H_0(X)$ 为单射。又由题设 $i_*:H_1(A)\to H_1(X)$ 为满射，由上题结论可得， $H_1(X,A)=0$
+\section{Exercise 18}
+考虑长正合列 $\cdots \to H_n(\mathbb{Q})\to H_n(\mathbb{R})\to H_n(\mathbb{R},\mathbb{Q})\to H_{n-1}(\mathbb{Q})\to\cdots$ \\
+由于 $\mathbb{Q}$ 的连通分支为其中的每一个点，因此 $H_n(\mathbb{Q})=\begin{cases} \oplus_{q\in \mathbb{Q}}\mathbb{Z} & n=0\\0 & \textrm{otherwise}\end{cases}$\\
+由于 $\mathbb{R}$ 是单连通的，可收缩到一点，故 
+$H_n(\mathbb{R})=\begin{cases}\mathbb{Z}& n=0\\0& n > 0\end{cases}$\\
+代入到正合列中，则有 $0\stackrel{j_*}{\to}H_1(\mathbb{R}, \mathbb{Q})\stackrel{\partial}{\to}H_0(\mathbb{Q})\cong \oplus_{q\in \mathbb{Q}} \mathbb{Z^q} \stackrel{i_*}{\to}H_0(\mathbb{R})\cong \mathbb{Z} \to 0$ ，由正合列可得 $\partial$ 为单射。由于 $\oplus_{q\in \mathbb{Q}} \mathbb{Z}$ 为自由Abel群，自由Abel群的子群是自由Abel群，故 $H_1(\mathbb{R},\mathbb{Q})$ 为自由Abel群。\\
+现考虑该群的基。 $C_n(\mathbb{R},\mathbb{Q}) = C_n(\mathbb{R})/C_n(\mathbb{Q})$\\
+% 考虑圈 $\alpha \in C_1(\mathbb{R}, \mathbb{Q})$ 那么有 $\partial \alpha = [0] \in C_0(\mathbb{R}, \mathbb{Q})$ ，即 $\partial \alpha \in C_0(\mathbb{Q})\cong \mathbb{Q}$ ，则 $\ker \partial_1$ 中的基为 $\alpha:\Delta^1\to \mathbb{R}$ 满足 $\partial \alpha : \partial \Delta^1\to \mathbb{R}\in C_0(\mathbb{Q})$ ，设 $\textrm{Im}\alpha = [a,b]\subset \mathbb{R}$ ，等价于 $a,b$ 满足 $b-a\in \mathbb{Q}$\\
+% 考虑边界 $\alpha \in C_1(\mathbb{R}, \mathbb{Q})$ 满足 $\exists \beta \in C_2(\mathbb{R},\mathbb{Q}),\partial \beta=\alpha$ ，则 $\textrm{Im}\partial_2$ 中的基为 $\partial \beta:\partial \Delta^2\to \mathbb{R}$ 满足 $\partial \beta\neq 0$ 即 $\textrm{Im} \partial \beta \notin C_1(\mathbb{Q})$ ，
+由于 $\partial$ 为单射，即 $\ker \partial=0$ ，故 $\textrm{Im}\partial \stackrel{h}{\cong} H_1(\mathbb{R},\mathbb{Q})$ ，由正合列 $\ker i_*=\textrm{Im} \partial \stackrel{h}{\cong} H_1(\mathbb{R},\mathbb{Q})$ ，故只需考虑 $i_*$ 的kernel\\
+$i_*(1_q)=1\in \mathbb{Z},1_q\in \mathbb{Z}^q$ ，选取 $x_0\in \mathbb{Q}$ 则 $i_*$ 的kernel的基为 $1_x-1_{x_0},\forall x\in \mathbb{Q}$ ，则 $h(1_x-1_{x_0}),\forall x\in \mathbb{Q}$ 为 $H_1(\mathbb{R},\mathbb{Q})$ 的一组基
+\section{Exercise 26}
+\textbf{引理} 对任意拓扑空间 $X$ ，一维同调群 $H_1(X)$ 是 $X$ 的基本群的阿贝尔化\\
+$X=[0,1],A=\{\frac{1}{n}\}_{n\geq 1}\cup \{0\}$ ，则粘合空间 $X/A$ 同胚于 Example 1.25 中的图示\\
+由 Example 1.25 可得同态 $\rho = \otimes_{n\geq 1}\rho_n:\pi_1(X/A)\to \prod_\infty \mathbb{Z}$ 是满射。\\
+由引理， $H_1(X/A)$ 是 $\pi_1(X/A)$ 的阿贝尔化。由于 $\prod_\infty \mathbb{Z}$ 是阿贝尔群，又 $\rho$ 为同态，故 $\forall a,b\in \pi_1(X/A),[a]=[b]\in H_1(X/A) \cong \pi_1(X/A)/[\pi_1(X/A), \pi_1(X/A)]$ ，有 $\rho(a)=\rho(b)$ ，故令 $\rho_0:H_1(X/A)\to \prod_\infty \mathbb{Z}:\rho_0([a])=\rho(a)$ ，有 $\rho_0$ 是良定义的。因此， $\textrm{Im}\rho_0=\textrm{Im}\rho=\prod_\infty \mathbb{Z}$ 。由于 $\prod_\infty \mathbb{Z}$ 为不可数集且 $\rho_0$ 满射，故 $H_1(X/A)$ 不可数\\
+由正合列 $H_1(X)\to H_1(X,A)\to H_0(A)$ 其中，由于 $X$ 可形变收缩至一点，故 $H_1(X)=0$ 。 $H_0(A)=\oplus_{n\in \mathbb{N}}\mathbb{Z}$ 为可数群，由 $H_1(X)=0$ 和正合可得 $H_1(X,A)\to H_0(A)$ 是单射，故 $H_1(X,A)$ 为可数群的子群，故可数\\
+由于 $H_1(X/A)$ 不可数而 $\tilde{H}_1(X,A)=H_1(X,A)$ 可数，因此它们不同构
+\section{Exercise 27}
+\subsection{a}
+令 $g=f\vert_A:A\to B$ ，由正合列交换图
+\begin{displaymath}
+    \xymatrix{
+        \cdots \ar[r] & H_n(A) \ar[r] \ar[d]^{g_*} & H_n(X) \ar[r] \ar[d]^{f_*} & H_n(X,A) \ar[r] \ar[d]^{\tilde f_*} & H_{n-1}(A) \ar[r] \ar[d]^{g_*} & H_{n-1}(X) \ar[r] \ar[d]^{f_*} & \cdots\\ 
+        \cdots \ar[r] & H_n(B) \ar[r] & H_n(Y) \ar[r] & H_n(Y,B) \ar[r] & H_{n-1}(B) \ar[r] & H_{n-1}(Y) \ar[r] & \cdots
+    }
+\end{displaymath}
+图中，每一个同调群均为Abel群。同时，由于 $f,g$ 都是同伦等价，所以诱导的 $f_*,g_*$ 为同构。由 5-lemma 可得， $\tilde{f}_*:H_n(X,A)\to H_n(Y,B)$ 为同构
+\subsection{b}
+假设 $f:(D^n,S^{n-1})\hookrightarrow (D^n,D^n-\{0\})$ 是同伦等价，则存在 $(D^n,\overline{S^{n-1}})\hookrightarrow (D^n, \overline{D^n-\{0\}})$ 的同伦等价。由于 $\overline{S^{n-1}=S^{n-1}},\overline{D^n-\{0\}}=D^n$ ，即存在 $(D^n, S^{n-1})\hookrightarrow (D^n, D^n)$ 的同伦等价。但着意味着 $S^{n-1}$ 和 $D^n$ 是同伦等价的，矛盾。所以 $f$ 不是同伦等价
+\end{CJK}
+\end{document}
