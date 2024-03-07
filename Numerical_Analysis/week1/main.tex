@@ -1,0 +1,30 @@
+\documentclass[12pt]{article}
+\usepackage{CJK}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{newtxmath}
+\usepackage[all]{xy}
+\usepackage{graphicx} % Add this line to use the graphicx package
+\geometry{a4paper,left=1cm,right=1cm,top=1cm,bottom=1cm}
+\begin{CJK}{UTF8}{gkai}
+%设定新的字体快捷命令
+\title{Week 1}
+\author{方科晨}
+\begin{document}
+\maketitle
+\subsection{Exercise 1}
+球体积公式为 $V=\frac{4}{3}\pi r^3$ ，令半径的准确值为 $R$ ，测量值为 $\hat R$ ，则球体积的相对误差为 $e_r(\hat V)=\frac{\hat V-V}{V}=\frac{\frac{4}{3}\pi \hat{R}^3-\frac{4}{3}\pi R^3}{\frac{4}{3}\pi R^3}=\frac{\hat{R}^3-R^3}{R^3}=(\frac{\hat R}{R})^3-1$ ，由题意得 $\vert (\frac{\hat R}{R})^3-1 \vert \leq 1\%$ ，则 $0.99\leq (\frac{\hat R}{R})^3 \leq 1.01$ ，即有 $-0.00334\leq e_r(\hat R)= \frac{\hat R-R}{R} \leq 0.00332$\\
+故误差限 $\varepsilon_r(\hat R)\approx 0.00332$
+\subsection{Exercise 2}
+(1) 绝对误差为 $\sin (x+h)-\sin x\approx h\cdot \sin'(x)=h\cos x$\\
+(2) 相对误差为 $\frac{\sin (x+h)-\sin x}{\sin x}\approx \frac{h\cos x}{\sin x}=h\cot x$
+\subsection{Exercise 4}
+令 $\hat Y_n$ 为计算得到的值，则有 $\hat Y_0=Y_0=28$ ， $\hat Y_n=\hat Y_{n-1}-\frac{1}{100}\times 27.982$ \\
+有 $Y_{100}=Y_0-\sqrt{783},\hat Y_{100}=\hat Y_0-27.982$
+则绝对误差为 $e(\hat Y_{100})=\hat Y_{100}-Y_{100}=\sqrt{783}-27.982=0.000137$ ，相对误差为 $e_r(\hat Y_{100})=\frac{e(\hat Y_{100})}{Y_{100}}=0.00767847$
+\subsection{补充题}
+$d_0=3$ ，又有 $0.1\%=0.001\leq \frac{5}{d_0+1}\times 10^{-3}=0.00125$ ，则前三位一定是对的（含“四舍五入”后与准确值的结果相同）
+\end{CJK}
+\end{document}
