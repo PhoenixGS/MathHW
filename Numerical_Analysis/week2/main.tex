@@ -1,0 +1,60 @@
+\documentclass[12pt, a4paper, oneside]{ctexart}
+\usepackage{amsmath, amsthm, amssymb, bm, graphicx, hyperref, mathrsfs}
+
+\title{\textbf{week2}}
+\author{方科晨}
+\date{\today}
+\linespread{1.5}
+\newcounter{problemname}
+\newenvironment{problem}{\stepcounter{problemname}\par\noindent\textbf{Problem. }}{\\\par}
+\newenvironment{solution}{\par\noindent\textbf{Solution. }}{\\\par}
+\newenvironment{note}{\par\noindent\textbf{题目\arabic{problemname}的注记. }}{\\\par}
+
+\begin{document}
+
+\maketitle
+
+\section{第一章}
+
+\begin{problem} 2
+    
+    \textbf{(3)}
+    $\textrm{cond}= \vert \frac{[f(x+h)-f(x)]/f(x)}{((x+h)-x)/x}\vert\approx \vert\frac{xf'(x)}{f(x)}\vert=\vert\frac{x\cos x}{\sin x}\vert$
+
+    \textbf{(4)}
+    当 $x$ 的取值在 $2\pi k,k\in \mathbb{Z}$ 附近时， $\sin x$ 的值接近于 $0$ ，条件数大，该问题高度敏感。
+\end{problem}
+
+\begin{problem} 6
+    
+    $\hat y_0$ 的误差 $e_0=\sqrt{2}-1.41$ ，由计算过程可以发现， $e_n=\hat y_n-y_n=(10\hat y_{n-1}-1)-(10y_{n-1}-1)=10(\hat y_{n-1}-y_{n-1})=10e_{n-1}$ ，故有 $e_{10}=10e_9=\cdots=10^{10}e_0\approx 0.42136\times 10^8$ ，不稳定。因为计算过程中误差会被逐渐放大。
+\end{problem}
+
+\begin{problem} 8
+    
+    令 $x$ 的扰动为 $\hat x-x=e_x$ ，则有条件数 $\textrm{cond}=\vert \frac{[f(\hat x,y)-f(x,y)]/f(x,y)}{((|\hat x|+|y|)-(|x|+|y|))/(|x|+|y|)}\vert=\vert \frac{f(\hat x,y)-f(x,y)}{|\hat{x}|-|x|}\cdot \frac{|x|+|y|}{f(x,y)}\vert$ 。由于 $\varepsilon$ 远小于 $1$ ，故 $x$ 不会在 $0$ 附近，因此 $x$ 与 $\hat x$ 同号，故 $|\hat{x}|-|x|=|\hat x-x|$ 。 \\
+    因此原式等于 $\vert \frac{f(\hat x,y)-f(x,y)}{\hat x - x}\cdot \frac{|x|+|y|}{f(x,y)}\vert\approx \vert \frac{\partial}{\partial x}f(x,y)\cdot \frac{1}{\varepsilon}\vert = \vert 1\cdot \frac{1}{\varepsilon}\vert=\frac{1}{\varepsilon}$\\
+    说明当做减法时，若两个数非常接近，即 $\varepsilon\approx 1$ 时，减法的条件数很大，即非常敏感。这正说明了抵消现象，减法结果的相对变化量会变大，在精度不变的情况下，有效数字减少。
+\end{problem}
+\begin{problem} 11
+
+    截断舍入： $(0.1)_{10}\approx (0.0001100)_2$ 最近舍入： $(0.1)_{10}\approx (0.0001101)_2$
+    IEEE单精度浮点数二进制表示： 00111101110011001100110011001101
+\end{problem}
+\section{第二章}
+\begin{problem} 1
+    
+    \textbf{(1)} $x$ 不在 $0$ 附近，则 $x^3-x^2-1=0\Leftrightarrow x^3=x^2+1\Leftrightarrow x=1+\frac{1}{x^2}$ ，则有迭代公式 $x_{k+1}=1+\frac{1}{x_k}$ 分析：对于区间 $[1,2]$ ，有 $\vert \frac{1}{x_1}-\frac{1}{x_2}\vert=\vert\frac{x_1-x_2}{x_1x_2}\vert \leq \vert x_1-x_2\vert$ 故由定理可得，该迭代全局收敛
+
+    \textbf{(2)} $x$ 不在 $1$ 附近，则 $x^3-x^2-1=0\Leftrightarrow x^2(x-1)=1\Leftrightarrow x^2=\frac{1}{x-1}$ ，则有迭代公式 $x_{k+1}=\frac{1}{\sqrt{x_k}-1}$ 
+
+    \textbf{(3)} $x^3-x^2-1=0\Leftrightarrow x^3=x^2+1$ ，则有迭代公式 $x_{k+1}=\sqrt[3]{1+x_k^2}$ 
+
+    通过(1)方法计算得 $x\approx 1.466$
+\end{problem}
+\begin{problem} 2
+    
+    设 $x_1<x_2$ ，由于 $0<m\leq f'(x)\leq M$ ，因此 $f$ 单调递增，故 $f(x_1)<f(x_2)$ 。且有 $f(x_2)-f(x_1)=\int_{x_1}^{x_2}f'(x)dx\leq \int_{x_1}^{x_2}Mdx=M(x_2-x_1)$ 
+    令 $g(x)=x-\lambda f(x)$ ，故有 $|g(x_1)-g(x_2)|=|(x_1-x_2)-\lambda (f(x_1)-f(x_2))|=(x_2-x_1)+\lambda (f(x_2)-f(x_1))\leq (x_2-x_1)+\lambda M(x_2-x_1)<(x_2-x_1)+2(x_2-x_1)=3|x_1-x_2|$ ，因此 $g$ Lipschitz连续，故收敛于根 $x^*$
+\end{problem}
+\end{document}
