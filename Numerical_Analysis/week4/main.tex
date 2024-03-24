@@ -1,0 +1,86 @@
+\documentclass[12pt, a4paper, oneside]{ctexart}
+\usepackage{amsmath, amsthm, amssymb, bm, graphicx, hyperref, mathrsfs}
+
+\title{\textbf{week3}}
+\author{方科晨}
+\date{\today}
+\linespread{1.5}
+\newcounter{problemname}
+\newenvironment{problem}{\stepcounter{problemname}\par\noindent\textbf{Problem. }}{\\\par}
+\newenvironment{solution}{\par\noindent\textbf{Solution. }}{\\\par}
+\newenvironment{note}{\par\noindent\textbf{题目\arabic{problemname}的注记. }}{\\\par}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem} 1
+
+	$\Vert A\Vert_\infty=\max_{1\leq i\leq n}\sum_{j=1}^n|a_{ij}|=1.1$\\
+	$\Vert A\Vert_1=\max_{1\leq j\leq n}\sum_{i=1}^n|a_{ij}|=0.8$\\
+	$\Vert A\Vert_2=\sqrt{\lambda_{max}(A^TA)}=0.6853$
+\end{problem}
+
+\begin{problem} 3
+	
+	由于 $\Vert \cdot\Vert$ 为向量范数，则有：
+	\textbf{正定性} $\forall x\in\mathbb{R}^n,\Vert x\Vert_p=\Vert Px\Vert \geq 0$ ，且有 $\Vert x\Vert_p=0\Leftrightarrow \Vert Px\Vert =0\Leftrightarrow Px=0\Leftrightarrow x=0$
+	\textbf{正其次性} $\forall \alpha\in \mathbb{R},\Vert \alpha x\Vert_p=\Vert \alpha Px\Vert=|\alpha|\cdot \Vert Px\Vert=|\alpha|\cdot \Vert x\Vert_p$
+	\textbf{三角不等式} $\forall x,y\in\mathbb{R}^n,\Vert x+y\Vert_p=\Vert P(x+y)\Vert=\Vert Px+Py\Vert\leq \Vert Px\Vert+\Vert Py\Vert=\Vert x\Vert_p+\Vert y\Vert_p$
+	
+	综上， $\Vert \cdot \Vert_p$ 是 $\mathbb{R}^n$ 上向量的一种范数。
+\end{problem}
+
+\begin{problem} 4
+	
+	由矩阵范数的性质可知， $\textrm{cond}(A)_\infty=\Vert A\Vert_\infty\Vert A^{-1}\Vert_p\geq \Vert AA^{-1}\Vert_\infty=\Vert I_n\Vert_\infty=1$ ，同时，当 $\lambda=\frac{2}{3}$ 时，可以求得 $\Vert A\Vert_\infty=2,\Vert A^{-1}\Vert_\infty=\frac{1}{2}$ 因此取到了 $\textrm{cond}$ 的最小值 $1$ 。当 $\lambda=-\frac{2}{3}$ 时同理，故得证。
+\end{problem}
+
+
+\begin{problem} 6
+	
+	$\textrm{cond}(AB)=\Vert AB\Vert \cdot \Vert (AB)^{-1}\Vert\leq \Vert A\Vert\cdot \Vert B\Vert\cdot \Vert B^{-1}\Vert \cdot \Vert A^{-1} \Vert=( \Vert A\Vert\cdot\Vert A^{-1} \Vert)\cdot ( \Vert B\Vert\cdot \Vert B^{-1}\Vert)=\textrm{cond}(A)\cdot \textrm{cond}(B)$ ，得证。 
+\end{problem}
+
+\begin{problem} 7
+	
+	不妨设 $B=\begin{pmatrix}
+		a_{11} & a_1^T\\
+		0 & A_2
+	\end{pmatrix}$ 则由高斯消元法的过程可得， $b_{ij}=a_{ij}-\frac{a_{1j}*a_{i1}}{a_{11}},\forall i\geq 2,j\geq 2$ ，又由于 $A$ 为对称阵，故 $a_{1j}=a_{j1},a_{i1}=a_{1i}$ 。由此两式不难得出 $b_{ij}=b_{ji},\forall i\geq 2,j\geq 2$ ，故 $A_2$ 为对称阵。
+\end{problem}
+
+\begin{problem} 11
+	
+	从最后一行往上，设当前为第 $i$ 行，通过一次除法可算出解 $x_i$ ，之后，对于第 $j\in [1, i-1]$ 行，把 $(j, i)$ 消成 $0$ ，通过一次乘法一次除法 ，从 $b_j$ 中减去相应的值。
+	综上，乘除法次数共为 $n+\frac{n(n-1)}{2}\cdot 2=n^2$ 次
+\end{problem}
+
+\begin{problem} 12
+	
+	\textbf{(A)} 
+	$ A=LU$ 其中， $L=\begin{pmatrix}
+		0.5 & 0.5 & 1\\
+		0 & 1 & 0\\
+		1 & 0 & 0
+	\end{pmatrix}, U=\begin{pmatrix}
+		2 & -2 & 1\\
+		0 & 4 & -1\\
+		0 & 0 & 1
+	\end{pmatrix}$
+	
+	\textbf{(C)}
+	$ C=LU$ 其中， $L=\begin{pmatrix}
+		1 & 0 & 0 & 0\\
+		1 & 1 & 0 & 0\\
+		1 & 0 & 1 & 0\\
+		1 & 1 & 1 & 1
+	\end{pmatrix},U=\begin{pmatrix}
+		1 & 1 & 1 & 1\\
+		0 & 1 & 1 & 1\\
+		0 & 0 & 1 & 1\\
+		0 & 0 & 0 & 1
+	\end{pmatrix}$
+\end{problem}
+
+\end{document}
