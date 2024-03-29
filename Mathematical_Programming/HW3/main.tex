@@ -152,17 +152,32 @@
     
     \textbf{(a)} 其中(1)等价于 $Ax>0$ ，可以转化成 $-Ax+\alpha e\leq 0,\alpha>0$ ，由Farkas's Lemma，有如下的alternative system： $(A\  e)^Ty=(0\ 1)^T,y\geq 0$ ，等价于 $A^Ty=0,y>0$ 。故得证。
 
-    \textbf{(b)} 考虑如下两个线性规划：
-    $$\begin{array}{ll}
-        \textrm{minimize} & c^Tx\\
-        \textrm{subject to} & Ax=b\\
-        & x\geq 0
-    \end{array}$$ 以及：
-    $$\begin{array}{ll}
-        \textrm{maximize} & b^Ty\\
-        \textrm{subject to} & A^Ty\leq x
-    \end{array}$$
-    这两个线性规划互为对偶，并且如果两者都有最优解 $x^*,y^*$ ，则存在 $c^Tx^*=b^Ty^*$ ，符合条件 $c^Tx-b^Ty\leq 0$ 。故该条件即等价于上面两个线性规划都有最优解。对于这两个线性规划的alternative system： $A^Tw\leq 0,b^Tw>0,A^Tz=0,z\geq 0,c^Tw<0$ ，如果题设条件成立，则两个规划均有解，则此条件不成立；如果此条件成立，则两个规划均无解，题设条件不成立，故为alternative system。
+    \textbf{(b)} 该系统等价于 $Ax=b,A^T(y^1-y^2)+s=c,c^Tx-b^T(y^1-y^2)+\alpha=0,x,y^1,y^2,s,\alpha>0$ ，也可写为以下形式：
+    $$\begin{pmatrix}
+        A & 0 & 0 & 0 & 0\\
+        0 & A^T & -A^T & I & 0\\
+        c^T & -b^T & b^T & 0 & 1
+    \end{pmatrix}\begin{pmatrix}
+        x\\y^1\\y^2\\s\\\alpha
+    \end{pmatrix}=\begin{pmatrix}
+        b\\c\\0
+    \end{pmatrix}
+    ,\begin{pmatrix}
+        x\\y^1\\y^2\\s\\\alpha
+    \end{pmatrix}\geq 0$$故由Farkas' Lemma，有alternative system：
+    $$\begin{pmatrix}
+        A^T & 0 & c\\
+        0 & A & -b\\
+        0 & -A & b\\
+        0 & I & 0\\
+        0 & 0 & 1
+    \end{pmatrix}\begin{pmatrix}
+        y'\\-x'\\-\tau
+    \end{pmatrix}\leq 0,\begin{pmatrix}
+        b^T & c^T & 0
+    \end{pmatrix}\begin{pmatrix}
+        y'\\-x'\\-\tau
+    \end{pmatrix}>0$$该系统等价于 $A^Ty'-c\tau\leq 0,Ax'-b\tau=0,x'\geq 0,\tau\geq 0,b^Ty'-c^Tx'>0$
 \end{problem}
 
 \begin{problem}
