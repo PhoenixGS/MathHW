@@ -1,0 +1,261 @@
+\documentclass[12pt, a4paper, oneside]{ctexart}
+\usepackage{amsmath, amsthm, amssymb, bm, graphicx, hyperref, mathrsfs}
+
+\title{\textbf{HW4}}
+\author{方科晨}
+\date{\today}
+\linespread{1.5}
+\newcounter{problemname}
+\newenvironment{problem}{\stepcounter{problemname}\par\noindent\textbf{Problem\arabic{problemname}. }}{\\\par}
+\newenvironment{solution}{\par\noindent\textbf{Solution. }}{\\\par}
+\newenvironment{note}{\par\noindent\textbf{题目\arabic{problemname}的注记. }}{\\\par}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem}
+    原LP可写为以下形式：
+    $$\begin{array}{ll}
+        \textrm{minimize} & \begin{pmatrix}
+            0 & e^T
+        \end{pmatrix}\begin{pmatrix}
+            x\\y
+        \end{pmatrix}\\
+        \textrm{subject to} & \begin{pmatrix}
+            A & I
+        \end{pmatrix}\begin{pmatrix}
+            x\\y
+        \end{pmatrix}=b\\
+        & \begin{pmatrix}
+            x\\y
+        \end{pmatrix}\geq 0
+    \end{array}$$
+    则可得对偶形式LP为：
+    $$\begin{array}{ll}
+        \textrm{maximize} & b^Tz\\
+        \textrm{subject to} & \begin{pmatrix}
+            A^T\\I
+        \end{pmatrix}z\leq \begin{pmatrix}
+            0\\e
+        \end{pmatrix}
+    \end{array}$$
+\end{problem}
+
+\begin{problem}
+    
+    \textbf{(a)} 可以构造对偶形式：
+    $$\begin{array}{ll}
+        \textrm{minimize} & y\\
+        \textrm{subject to} & \begin{pmatrix}
+            1\\-1
+        \end{pmatrix}y\geq \begin{pmatrix}
+            2\\-4
+        \end{pmatrix}\\
+        & y\geq 0
+    \end{array}$$ 基有两种取法，且 $y$ 的取值分别为 $2,-4$ 。可求得最优值为 $2$ ，最优解为 $y=2$
+
+    \textbf{(b)} 由于 $-1\cdot y\geq -4$ 不取等号，故关于 $x_2\geq 0$ 的限制取等号，即 $x_2=0$ ，又 $y\geq 0$ 不取等号，故 $\begin{pmatrix}
+        x_1 & x_2
+    \end{pmatrix}\begin{pmatrix}
+        1\\-1
+    \end{pmatrix}\leq 1$的限制取等号，故可以求得 $x_1=1,x_2=0$ ，此时 LP 的值也为 $2$ ，故为最优解。
+
+    \textbf{(c)} 即对偶问题变成了如下形式：
+    $$\begin{array}{ll}
+        \textrm{minimize} & y\\
+        \textrm{subject to} & \begin{pmatrix}
+            1\\-1
+        \end{pmatrix}y\geq \begin{pmatrix}
+            c_1\\-4
+        \end{pmatrix}\\
+        & y\geq 0
+    \end{array}$$ 则可求得当 $c_1>4$ 时对偶问题没有可行解，则原问题要么没有可行解，要么最优值为无穷大。又原问题有可行解，故原问题的最优值无穷大。
+\end{problem}
+
+\begin{problem}
+
+    \textbf{(a)} 选定的基为 $x_1,x_3$ 对应的矩阵列，且有 $\begin{pmatrix}
+        1 & 6\\1 & 2
+    \end{pmatrix}\begin{pmatrix}
+        x_1\\x_3
+    \end{pmatrix}=\begin{pmatrix}
+        b_1\\1
+    \end{pmatrix}$ ，故有 $b_1=2$ 。可求得对偶问题为：
+    $$\begin{array}{ll}
+        \textrm{maximize} & \begin{pmatrix}
+            2 & 1
+        \end{pmatrix} \begin{pmatrix}
+            y_1\\y_2
+        \end{pmatrix}\\
+        \textrm{subject to} & \begin{pmatrix}
+            1 & 1\\
+            -1 & 1\\
+            6 & 2
+        \end{pmatrix}\begin{pmatrix}
+            y_1\\y_2
+        \end{pmatrix}\leq \begin{pmatrix}
+            5\\0\\21
+        \end{pmatrix}\\
+        & \begin{pmatrix}
+            y_1\\y_2
+        \end{pmatrix}\geq 0
+    \end{array}$$ 
+    
+    \textbf{(b)} 由于 $x_1>0,x_3>0$ ，故有 $y_1+y_2=5,6y_1+2y_2=21$ 可解得 $y_1=\frac{11}{4},y_2=\frac{9}{4}$ ，最优值为 $\frac{31}{4}$
+\end{problem}
+
+\begin{problem}
+    
+    可得对偶问题为：
+    $$\begin{array}{ll}
+        \textrm{minimize} & \begin{pmatrix}
+            1 & 1
+        \end{pmatrix} \begin{pmatrix}
+            y_1\\y_2
+        \end{pmatrix}\\
+        \textrm{subject to} & \begin{pmatrix}
+            1 & -1\\
+            -1 & 1\\
+            -1 & 2
+        \end{pmatrix}\begin{pmatrix}
+            y_1\\y_2
+        \end{pmatrix}\geq \begin{pmatrix}
+            1\\1\\0
+        \end{pmatrix}\\
+        & y_1 \textrm{ free },y_2\leq 0
+    \end{array}$$
+    由第一第二个限制可得对偶问题无解，故原问题无解或unbounded。又由于 $(x_1,x_2,x_3)=(4,1,2)$ 为原问题可行解，故原问题unbounded。
+\end{problem}
+
+\begin{problem}
+
+    可得对偶问题为：
+    $$\begin{array}{ll}
+        \textrm{max} & y_1-3y_2-5y_3\\
+        \textrm{s.t.} & y_1+2y_2+y_3\leq -4\\
+        & y_1-6y_2+4y_3=-5\\
+        & 2y_1+3y_2+3y_3\leq -7\\
+        & -y_1+y_2+2y_3\leq 1\\
+        & y_1\geq 1, y_2\leq -3,y_3\textrm{ free}
+    \end{array}$$
+\end{problem}
+
+\begin{problem}
+
+    可得对偶问题为：
+    $$\begin{array}{ll}
+        \textrm{min} & -2y_1-7y_2\\
+        \textrm{s.t.} & y_1+y_2=10\\
+        & y_2\leq 7\\
+        & -6y_1+5y_2\leq 30\\
+        & y_1-y_2\leq 2\\
+        & y_1,y_2\geq 0
+    \end{array}$$ 
+    将第一个限制和其他三个限制中的一个组合取等可解得三组解： $(y_1,y_2)=(3,7),(\frac{20}{11},\frac{90}{11}),(6,4)$ ，其中可行解为 $(3,7),(6,4)$ ，故求得对偶问题最优解为 $(3,7)$ ，最优值为 $-55$ 。由于在第三、第四个限制中不取等，故有 $x_3=x_4=0$ 。且 $y_1,y_2>0$ 故有原问题的两个限制取等，故解得 $x_1=-2,x_2=-5$ ，且最优值同样为 $-55$ 。
+\end{problem}
+
+\begin{problem}
+    
+    \textbf{(a)} 不妨令乘以实数 $\mu$ 之后的 $A,b$ 分别为 $A_a,b_a$ 。令原问题 $\textrm{LP}$ 的最优解为 $x^*$ 。令 $\textrm{LP}_a$ 为 
+    $$\begin{array}{ll}
+        \textrm{min} & c^Tx\\
+        \textrm{s.t.} & A_ax=b_a\\
+        & x\geq 0
+    \end{array} $$ 则 $x^*$ 依然为该问题的最优解，因为限制不变，目标函数不变。考虑该问题的对偶问题 $\textrm{LD}_a$ ：
+    $$\begin{array}{ll}
+        \textrm{max} & b_a^Ty\\
+        \textrm{s.t.} & A_a^Ty\leq c
+    \end{array}$$ 因为 $A_a$ 是 $A$ 的第 $k$ 列乘以 $\mu$ ，则 $y^*_a=(y_1^*,\cdots,y_{k-1}^*,\frac{1}{\mu}y_k^*,y_{k+1}^*,\cdots,y_m^*)$ 为该问题的可行解。又由于 $b_a^Ty_a^*=\sum_{i=1}^mb_{ai}y^*_{ai}=\sum_{i\neq k}b_iy_i^*+(\mu b_i)(\frac{1}{\mu}y_i^*)=\sum_{i=1}^mb_iy_i^*=c^Tx^*$ 为 $\textrm{LP}_a$ 的最优值，所以 $y_a^*$ 为 $\textrm{LD}_a$ 的最优解。
+
+    \textbf{(b)} 设新问题为 $\textrm{LP}_b$ ，相应的对偶问题为 $\textrm{LD}_b$ 。由于线性方程组之间的等价转化，不难发现 $x^*$ 依然是 $\textrm{LP}_b$ 的最优解。令进行行变换后的 $A,b$ 分别为 $A_b,b_b$ 。有 $\textrm{LP}_b$ ：
+    $$\begin{array}{ll}
+        \textrm{min} & c^Tx\\
+        \textrm{s.t.} & A_bx=b_b\\
+        & x\geq 0
+    \end{array} $$ 以及对偶问题 $\textrm{LD}_b$ ：
+    $$\begin{array}{ll}
+        \textrm{max} & b_b^Ty\\
+        \textrm{s.t.} & A_b^Ty\leq c
+    \end{array}$$ 由于 $(A_b)_r=A_r+\mu A_k$ （为行向量），令 $y_b^*=(y_1^*,\cdots,y_k^*-\mu y_r^*,\cdots y_m^*)$ ，则有 $A_b^T y_b^*=\sum_{i=1}^m (A_b)_iy_{bi}^*=\sum_{i\neq k,r}A_iy_i^*+(A_b)_ry_{br}^*+(A_b)_ky_{bk}^*=\sum_{i\neq k,r}A_iy_i^*+(A_r+\mu A_k)y_{r}^*+A_k(y_k^*-\mu y_r^*)=\sum_{i=1}^mA_iy_i^*\leq c$ ，故 $y_b^*$ 为 $\textrm{LD}_b$ 的可行解。同时 $b_b^Ty_b^*==\sum_{i=1}^m (b_b)_iy_{bi}^*=\sum_{i\neq k,r}b_iy_i^*+(b_b)_ry_{br}^*+(b_b)_ky_{bk}^*=\sum_{i\neq k,r}b_iy_i^*+(b_r+\mu b_k)y_{r}^*+b_k(y_k^*-\mu y_r^*)=\sum_{i=1}^mb_iy_i^*=b^Ty^*=c^Tx^*$ 为 $\textrm{LP}_b$ 的最优值，故 $y_b^*$ 为 $\textrm{LD}_b$ 的最优解。
+\end{problem}
+
+\begin{problem}
+    
+    \textbf{(a)} 由于 $\Vert x-c\Vert_\infty=\max_{i=1}^n \vert x_i-c_i\vert$ 故原问题转化为如下的LP：
+    $$\begin{array}{ll}
+        \textrm{min} & d\\
+        \textrm{s.t.} & Ax\leq b\\
+        & -d\cdot e\leq x-c\leq d\cdot e
+    \end{array}$$进一步可转化为：
+    $$\begin{array}{ll}
+        \textrm{min} & \begin{pmatrix}
+            0 & 1
+        \end{pmatrix}\begin{pmatrix}
+            x\\d
+        \end{pmatrix}\\
+        \textrm{s.t} & \begin{pmatrix}
+            A & 0
+        \end{pmatrix}\begin{pmatrix}
+            x\\d
+        \end{pmatrix}\leq b\\
+        & \begin{pmatrix}
+            I & e
+        \end{pmatrix}\begin{pmatrix}
+            x\\d
+        \end{pmatrix}\geq c\\
+        & \begin{pmatrix}
+            I & -e
+        \end{pmatrix}\begin{pmatrix}
+            x\\d
+        \end{pmatrix}\leq c
+    \end{array}$$ 其中 $e$ 为全 $1$ 向量
+ 
+    \textbf{(b)} 由上面的形式可写出如下对偶问题：
+    $$\begin{array}{ll}
+        \textrm{max} & \begin{pmatrix}
+            b^T & c^T & c^T
+        \end{pmatrix}\begin{pmatrix}
+            y_1\\ \vdots \\y_{3n}
+        \end{pmatrix}\\
+        \textrm{s.t.} & \begin{pmatrix}
+            A^T & I & I\\
+            0 & e^T & -e^T
+        \end{pmatrix}\begin{pmatrix}
+            y_1\\\vdots\\y_{3n}
+        \end{pmatrix}=\begin{pmatrix}
+            0\\1
+        \end{pmatrix}\\
+        & y_1,\cdots,y_n\leq 0, y_{n+1},\cdots,y_{2n}\geq 0, y_{2n+1},\cdots,y_{3n}\leq 0
+    \end{array}$$ 令 $y^T=(y_1,\cdots,y_n),z^T=(z_1,\cdots,z_n)=(y_{n+1}+y_{2n+1},\cdots,y_{2n}+y_{3n}),w^T=(w_1,\cdots,w_n)=(y_{n+1}-y_{2n+1},\cdots,y_{2n}-y_{3n})$ ，则该对偶问题可以写成：
+    $$\begin{array}{ll}
+        \textrm{max} & \begin{pmatrix}
+            b^T & c^T
+        \end{pmatrix}\begin{pmatrix}
+            y\\z
+        \end{pmatrix}\\
+        \textrm{s.t.} & \begin{pmatrix}
+            A^T & I
+        \end{pmatrix}\begin{pmatrix}
+            y\\z
+        \end{pmatrix}\\
+        & \sum_{i=1}^n w_i=1\\
+        & y\leq 0,z \textrm{ free },w\geq 0
+    \end{array}$$ 不难发现 $w$ 无用，故可简化为：
+    $$\begin{array}{ll}
+        \textrm{max} & \begin{pmatrix}
+            b^T & c^T
+        \end{pmatrix}\begin{pmatrix}
+            y\\z
+        \end{pmatrix}\\
+        \textrm{s.t.} & \begin{pmatrix}
+            A^T & I
+        \end{pmatrix}\begin{pmatrix}
+            y\\z
+        \end{pmatrix}=0\\
+        & y\leq 0,z \textrm{ free }
+    \end{array}$$
+    
+    \textbf{(c)} 由于 $c\notin \mathcal{P}$ ，因此两问题的最优值均大于 $0$ ，即 $b^Ty+c^Tz>0\Leftrightarrow c^Tz>-b^Ty$ 。由约束可得 $-A^Ty=z$ 。对于 $\forall x,Ax\leq b$ 都有 $z^Tx=(-A^Ty)^Tx=-y^TAx\leq -y^Tb$ ，因为 $-y\geq 0$ 且 $Ax\leq b$。即 $x^Tz\leq -b^Ty$ 。因此可以将 $c$ 和 $\mathcal{P}$ 中的点按照与 $z$ 的点积来进行separate。
+\end{problem}
+\end{document}
